@@ -3,7 +3,6 @@ package Controler;
 import java.awt.event.*;
 
 public class Button{
-
     private int Time;
     private int ButtonCode;
     private int LastPressTime;
