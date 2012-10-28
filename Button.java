@@ -31,7 +31,7 @@ public class Button{
 
     public boolean isPress(){return getPressing();}
 
-    public void resetButton(){setButton(false);}
+    public void resetButton(){setPressing(false);}
 
     public void incrementTime(){
 	setTime(getTime()+1);

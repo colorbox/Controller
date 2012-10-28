@@ -3,7 +3,7 @@ package Controller;
 import java.awt.event.*;
 
 public class Controller{
-    private ZButton,XButton;
+    private Button ZButton,XButton;
     private Stick stick;
 
     public Controller(){
@@ -16,11 +16,11 @@ public class Controller{
 	return ZButton.isPress();
     }
     public boolean isXPress(){
-	return XPress.isPress();
+	return XButton.isPress();
     }
 
     public int getStickDirection(){
-	stick.getDirection();
+	return stick.getDirection();
     }
 
     public void incrementTime(){
@@ -41,7 +41,7 @@ public class Controller{
 	int keycode = e.getKeyCode();
 	ZButton.keyReleased(keycode);
 	XButton.keyReleased(keycode);
-	stick.keyReleased(keycode);
+	//stick.keyReleased(keycode);
     }
 }
 

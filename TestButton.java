@@ -35,11 +35,6 @@ public class TestButton{
     @Test public void buttonPressTest(){
 	button.keyPressed(KeyEvent.VK_RIGHT);
 	assertTrue(button.getPressing());
-	/*
-	button.incrementTime();
-	button.keyPressed(KeyEvent.VK_RIGHT);
-	assertTrue(button.getPressing());
-	*/
     }
 
     @Test public void buttonReleaseTest(){
