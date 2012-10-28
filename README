@@ -1,4 +1,33 @@
+
 This Module is gaming controller for javaaplet.
 
 Stick express 8 directions stick.
 Button express 1 button.
+
+usage:
+
+Controller variable needs to execute incrementTime() method in game loop.
+
+
+
+example:
+
+while(){
+
+	.
+	.
+	.
+
+	gaming loop and operation
+	if(Controller.getStickDirection()==8){
+		Character.jump();
+	}
+
+	.
+	.
+	.
+
+	Controller.incrementTime();
+
+
+}
