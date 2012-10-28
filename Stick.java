@@ -14,6 +14,7 @@ public class Stick{
 	Down.incrementTime();
 	Right.incrementTime();
 	Left.incrementTime();
+	decideDirection();
     }
 
     public Stick(){
@@ -48,11 +49,19 @@ public class Stick{
     }
 
     public void keyPressed(int KeyCode){
+	System.out.println(KeyCode);
 	Up.keyPressed(KeyCode);
 	Down.keyPressed(KeyCode);
 	Right.keyPressed(KeyCode);
 	Left.keyPressed(KeyCode);
     }
 
+    public void keyReleased(int KeyCode){
+	Up.keyReleased(KeyCode);
+	Down.keyReleased(KeyCode);
+	Right.keyReleased(KeyCode);
+	Left.keyReleased(KeyCode);
+	
+    }
 
 }

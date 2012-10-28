@@ -23,14 +23,20 @@ public class Controller{
 	return stick.getDirection();
     }
 
+    public void resetButton(){
+	ZButton.resetButton();
+	XButton.resetButton();
+    }
+
     public void incrementTime(){
+	stick.incrementTime();
 	ZButton.incrementTime();
 	XButton.incrementTime();
-	stick.incrementTime();
     }
 
 
     public void keyPressed(KeyEvent e){
+	System.out.println(getStickDirection());
 	int keycode = e.getKeyCode();
 	ZButton.keyPressed(keycode);
 	XButton.keyPressed(keycode);
@@ -41,7 +47,7 @@ public class Controller{
 	int keycode = e.getKeyCode();
 	ZButton.keyReleased(keycode);
 	XButton.keyReleased(keycode);
-	//stick.keyReleased(keycode);
+	stick.keyReleased(keycode);
     }
 }
 

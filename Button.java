@@ -35,7 +35,6 @@ public class Button{
 
     public void incrementTime(){
 	setTime(getTime()+1);
-	resetButton();
     }
 
     public void keyPressed(int KeyCode){
