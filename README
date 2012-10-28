@@ -26,6 +26,7 @@ while(){
 	.
 	.
 	.
+	Controller.buttonReset();
 
 	Controller.incrementTime();
 
