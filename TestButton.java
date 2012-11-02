@@ -1,4 +1,3 @@
-/*
 package Controller;
 
 import java.awt.event.*;
@@ -23,7 +22,6 @@ public class TestButton{
     }
 
     @Before public void setUp() {
-	System.out.println("unko");
 	button = new Button(KeyEvent.VK_RIGHT,8);
     }
 
@@ -67,4 +65,3 @@ public class TestButton{
     }
 
 }
-*/

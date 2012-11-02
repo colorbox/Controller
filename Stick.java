@@ -26,24 +26,28 @@ public class Stick{
     }
 
     public void decideDirection(){
-	if(Right.isPress()){
+	boolean up=Up.isPress();
+	boolean down=Down.isPress();
+	boolean right=Right.isPress();
+	boolean left=Left.isPress();
+	if(right){
 	    setDirection(6);
-	}else if(Left.isPress()){
+	}else if(left){
 	    setDirection(4);
-	}else if(Up.isPress()){
+	}else if(up){
 	    setDirection(8);
-	}else if(Down.isPress()){
+	}else if(down){
 	    setDirection(2);
 	}else{
 	    setDirection(5);
 	}
-	if(Right.isPress() && Up.isPress()){
+	if(right && up){
 	    setDirection(9);
-	}else if(Up.isPress() && Left.isPress()){
+	}else if(up && left){
 	    setDirection(7);
-	}else if(Left.isPress() && Down.isPress()){
+	}else if(left && down){
 	    setDirection(1);
-	}else if(Down.isPress() && Right.isPress()){	
+	}else if(down && right){	
 	    setDirection(3);
 	}
     }
