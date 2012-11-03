@@ -37,6 +37,7 @@ public class TestButton{
 
     @Test public void buttonReleaseTest(){
 	button.keyPressed(KeyEvent.VK_RIGHT);
+	button.testOut();
 	assertTrue(button.isPress());
 
 	button.incrementTime();

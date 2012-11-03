@@ -16,7 +16,6 @@ public class Button extends ButtonConcept{
 
     public void keyPressed(int KeyCode){
 	//if key code and argument match, Button is Pressing , then Press the Button.
-	//And renew LastPressTime.
 	if( getButtonCode() == KeyCode ){
 	    buttonPress();
 	}

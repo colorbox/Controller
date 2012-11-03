@@ -27,15 +27,29 @@ public class ButtonConcept{
 
     public boolean isPress(){return getPressing();}
 
+    public void testOut(){
+	System.out.println("time-lpt"+(getTime() - getLastPressTime()) );
+	System.out.println("timeint"+getPressInterval());
+    }
+
     public void resetButton(){setPressing(false);}
+    /*
+    public void resetButton(){
+	if( canPress() ){
+	    setLastPressTime(getTime());
+	}
+    }
+    */
+
 
     public void incrementTime(){setTime(getTime()+1);}
 
     //If time interval is enough,and Button is not Pressing,then Button can press.
     public boolean canPress(){
-	return ( getTime() - getLastPressTime() >= getPressInterval() && !isPress() ) ;
+	return ( getTime() - getLastPressTime() >= getPressInterval() && !isPress()) ;
     }
 
+    //And renew LastPressTime.
     public void buttonPress(){
 	if( canPress() ){
 	    setPressing(true);
