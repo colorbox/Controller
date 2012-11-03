@@ -9,7 +9,7 @@ public class Controller{
     public Controller(){
 	ZButton = new Button(KeyEvent.VK_Z,10);
 	XButton = new Button(KeyEvent.VK_X,10);
-	stick = new Stick();
+	stick = new Stick(KeyEvent.VK_UP,KeyEvent.VK_DOWN,KeyEvent.VK_RIGHT,KeyEvent.VK_LEFT);
     }
 
     public boolean isZPress(){

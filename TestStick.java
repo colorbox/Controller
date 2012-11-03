@@ -20,7 +20,7 @@ public class TestStick{
     }
 
     @Before public void setUp() {
-	stick = new Stick();
+	stick = new Stick(KeyEvent.VK_UP,KeyEvent.VK_DOWN,KeyEvent.VK_RIGHT,KeyEvent.VK_LEFT);
     }
 
     @Test public void dnewtralDirectionTest(){
@@ -72,11 +72,19 @@ public class TestStick{
 	assertEquals(3,stick.getDirection());
     }
 
-    @Test public void directionTest(){
+    @Test public void directionDownLeftTest(){
 	stick.keyPressed(KeyEvent.VK_LEFT);
 	stick.keyPressed(KeyEvent.VK_DOWN);
 	stick.decideDirection();
 	assertEquals(1,stick.getDirection());
+    }
+
+    @Test public void direction3DTest(){
+	stick.keyPressed(KeyEvent.VK_LEFT);
+	stick.keyPressed(KeyEvent.VK_DOWN);
+	stick.keyPressed(KeyEvent.VK_UP);
+	stick.decideDirection();
+	assertEquals(5,stick.getDirection());
     }
 
 

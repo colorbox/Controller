@@ -1,7 +1,5 @@
 package Controller;
 
-import java.awt.event.*;
-
 public class Stick{
     private int Direction;
     private Button Up,Down,Right,Left;
@@ -17,11 +15,11 @@ public class Stick{
 	decideDirection();
     }
 
-    public Stick(){
-	Up = new Button(KeyEvent.VK_UP,0);
-	Down = new Button(KeyEvent.VK_DOWN,0);
-	Right = new Button(KeyEvent.VK_RIGHT,0);
-	Left = new Button(KeyEvent.VK_LEFT,0);
+    public Stick(int UpCode,int DownCode,int RightCode,int LeftCode){
+	Up = new Button(UpCode,0);
+	Down = new Button(DownCode,0);
+	Right = new Button(RightCode,0);
+	Left = new Button(LeftCode,0);
 	setDirection(5);
     }
 
@@ -47,8 +45,12 @@ public class Stick{
 	    setDirection(7);
 	}else if(left && down){
 	    setDirection(1);
-	}else if(down && right){	
+	}else if(down && right){
 	    setDirection(3);
+	}
+	//not allow 3 or 4 directions input
+	if( (up&&down&&right) || (up&&down&&left) || (up&&right&&left) || (down&&right&&left) || (up&&down&&right&&left)){
+	    setDirection(5);
 	}
     }
 

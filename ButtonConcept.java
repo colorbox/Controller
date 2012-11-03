@@ -18,23 +18,33 @@ public class ButtonConcept{
     public int getPressInterval(){return PressInterval;}
     public boolean getPressing(){return Pressing;}
 
-
     public ButtonConcept(int PressInterval){
 	setTime(0);
 	setPressInterval(PressInterval);
 	setLastPressTime( -1*getPressInterval() );
 	setPressing(false);
-
     }
 
     public boolean isPress(){return getPressing();}
 
     public void resetButton(){setPressing(false);}
 
-    public void incrementTime(){
-	setTime(getTime()+1);
+    public void incrementTime(){setTime(getTime()+1);}
+
+    //If time interval is enough,and Button is not Pressing,then Button can press.
+    public boolean canPress(){
+	return ( getTime() - getLastPressTime() >= getPressInterval() && !isPress() ) ;
     }
 
+    public void buttonPress(){
+	if( canPress() ){
+	    setPressing(true);
+	    setLastPressTime(getTime());
+	}
+    }
 
+    public void buttonRelease(){
+	setPressing(false);
+    }
 
 }
