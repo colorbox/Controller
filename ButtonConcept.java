@@ -33,14 +33,6 @@ public class ButtonConcept{
     }
 
     public void resetButton(){setPressing(false);}
-    /*
-    public void resetButton(){
-	if( canPress() ){
-	    setLastPressTime(getTime());
-	}
-    }
-    */
-
 
     public void incrementTime(){setTime(getTime()+1);}
 
