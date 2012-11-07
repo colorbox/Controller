@@ -28,8 +28,7 @@ public class ButtonConcept{
     public boolean isPress(){return getPressing();}
 
     public void testOut(){
-	System.out.println("time-lpt"+(getTime() - getLastPressTime()) );
-	System.out.println("timeint"+getPressInterval());
+	System.out.println("time - lpt"+(getTime() - getLastPressTime()) );
     }
 
     public void resetButton(){setPressing(false);}
@@ -50,7 +49,7 @@ public class ButtonConcept{
     }
 
     public void buttonRelease(){
-	setPressing(false);
+	//setPressing(false);
     }
 
 }

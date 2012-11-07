@@ -38,6 +38,7 @@ public class TestButton{
     @Test public void buttonReleaseTest(){
 	button.keyPressed(KeyEvent.VK_RIGHT);
 	assertTrue(button.isPress());
+	button.resetButton();
 
 	button.incrementTime();
 	button.keyReleased(KeyEvent.VK_RIGHT);
@@ -59,7 +60,7 @@ public class TestButton{
 
 	button0.keyPressed(1);
 	assertTrue(button0.isPress());
-	button0.keyReleased(1);
+	button0.resetButton();
 	assertTrue(!button0.isPress());
 
     }

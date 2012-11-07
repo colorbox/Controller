@@ -27,8 +27,17 @@ while(){
 	.
 	.
 	Controller.buttonReset();
-
 	Controller.incrementTime();
 
 
 }
+
+keyPress(KeyEvent e){
+	Controller.keyPressed(e);
+}
+
+----------
+Test
+java org.junit.runner.JUnitCore Controller.TestXXX
+
+
