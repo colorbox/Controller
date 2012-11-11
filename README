@@ -26,14 +26,16 @@ while(){
 	.
 	.
 	.
-	Controller.buttonReset();
 	Controller.incrementTime();
 
 
 }
 
-keyPress(KeyEvent e){
+keyPressed(KeyEvent e){
 	Controller.keyPressed(e);
+}
+keyReleased(KeyEvent e){
+	Controller.keyReleased(e);
 }
 
 ----------

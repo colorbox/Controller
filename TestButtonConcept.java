@@ -48,10 +48,5 @@ public class TestButtonConcept{
 	assertTrue(button.isPress());
     }
 
-    @Test public void buttonReleaseTest(){
-	button.buttonPress();
-	button.buttonRelease();
-	assertTrue(!button.isPress());
-    }
 
 }

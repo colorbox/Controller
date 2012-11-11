@@ -49,7 +49,9 @@ public class ButtonConcept{
     }
 
     public void buttonRelease(){
-	//setPressing(false);
+	if(getTime()!=getLastPressTime()){
+	    setPressing(false);
+	}
     }
 
 }
