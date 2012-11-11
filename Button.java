@@ -1,31 +1,41 @@
 package Controller;
 
-import java.awt.event.*;
-
 public class Button extends ButtonConcept{
 
-    private int ButtonCode;
+    private int Time;
+    private int LastPressTime;
+    private int PressInterval;
 
-    public void setButtonCode(int ButtonCode){this.ButtonCode=ButtonCode;}
-    public int getButtonCode(){return ButtonCode;}
+    public void setTime(int Time){this.Time=Time;}
+    public void setLastPressTime(int LastPressTime){this.LastPressTime=LastPressTime;}
+    public void setPressInterval(int PressInterval){this.PressInterval=PressInterval;}
 
-    public Button(int KeyCode,int PressInterval){
-	super(PressInterval);
-	setButtonCode(KeyCode);
+    public int getTime(){return Time;}
+    public int getLastPressTime(){return LastPressTime;}
+    public int getPressInterval(){return PressInterval;}
+
+    public Button(int PressInterval){
+	setTime(0);
+	setPressInterval(PressInterval);
+	setLastPressTime( -1*getPressInterval() );
     }
 
-    public void keyPressed(int KeyCode){
-	//if key code and argument match, Button is Pressing , then Press the Button.
-	if( getButtonCode() == KeyCode ){
-	    buttonPress();
+    //If time interval is enough then player can press the button.
+    public boolean canPress(){
+	return ( getTime() - getLastPressTime() >= getPressInterval() ) ;
+    }
+
+    public boolean isPress(){
+	//can Press and button is pressing ,then return true.
+	if( canPress() && getPressing() ){
+	    setLastPressTime(getTime());
+	    return getPressing();
 	}
+	return false;
     }
 
-    public void keyReleased(int KeyCode){
-	if( getButtonCode() == KeyCode ){
-	    buttonRelease();
-	}
-    }
+    public void incrementTime(){setTime(getTime()+1);}
+
 
 
     

@@ -2,17 +2,9 @@ package Controller;
 
 import java.awt.event.*;
 
-
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import junit.framework.JUnit4TestAdapter;
-import junit.samples.money.IMoney;
-import junit.samples.money.Money;
-import junit.samples.money.MoneyBag;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class TestButton{
     static private Button button;
@@ -22,7 +14,11 @@ public class TestButton{
     }
 
     @Before public void setUp() {
-	button = new Button(KeyEvent.VK_RIGHT,8);
+	button = new Button(5);
+    }
+
+    @Test public void constructorTest(){
+	assertEquals(0,button.getTime());
     }
 
     @Test public void incrementTimeTest(){
@@ -30,39 +26,81 @@ public class TestButton{
 	assertEquals(1,button.getTime()); 
     }
 
-    @Test public void buttonPressTest(){
-	button.keyPressed(KeyEvent.VK_RIGHT);
-	assertTrue(button.getPressing());
-    }
-
     @Test public void buttonReleaseTest(){
-	button.keyPressed(KeyEvent.VK_RIGHT);
+	button.buttonPress();
 	assertTrue(button.isPress());
-	button.resetButton();
 
 	button.incrementTime();
-	button.keyReleased(KeyEvent.VK_RIGHT);
+	button.buttonRelease();
 	assertTrue(!button.isPress());
 
 	for(int i=0;i<button.getPressInterval()-2;i++){
 	    button.incrementTime();
-	    button.keyPressed(KeyEvent.VK_RIGHT);
+	    button.buttonPress();
 	    assertTrue(!button.isPress());
 	}
 	
 	button.incrementTime();
-	button.keyPressed(KeyEvent.VK_RIGHT);
+	button.buttonPress();
 	assertTrue(button.isPress());
     }
 
+    //test for button with time interval 0
     @Test public void zeroButtonTest(){
-	Button button0 = new Button(1,0);
+	Button button0 = new Button(0);
 
-	button0.keyPressed(1);
+	button0.buttonPress();
 	assertTrue(button0.isPress());
-	button0.resetButton();
-	assertTrue(!button0.isPress());
+
+	button0.buttonPress();
+	assertTrue(button0.isPress());
+
+	button0.buttonRelease();
+	assertFalse(button0.isPress());
 
     }
+
+    @Test public void canPressTest(){
+	button.setTime(10);
+	button.setLastPressTime(5);
+	assertTrue(button.canPress());
+
+
+	for(int Time=1000;Time>=-1000;Time--){
+	    button.setTime(Time);
+	    if( Time-button.getLastPressTime() >= button.getPressInterval() ){
+		assertTrue(button.canPress());
+	    }else{
+		assertFalse(button.canPress());
+	    }
+	}
+    }
+
+    @Test public void isPressTest(){
+	button.buttonPress();
+	button.buttonRelease();
+	button.buttonPress();
+	button.buttonRelease();
+	button.buttonPress();
+	button.buttonRelease();
+	button.buttonPress();
+	assertTrue(button.isPress());
+
+	for(int i=0;i<4;i++){
+	    button.buttonPress();
+	    button.buttonRelease();
+	    button.buttonPress();
+	    button.buttonRelease();
+	    button.buttonPress();
+	    button.buttonRelease();
+	    button.buttonPress();
+	    button.incrementTime();
+	    assertFalse(button.isPress());
+	}
+
+	button.incrementTime();
+	assertTrue(button.isPress());
+    }
+
 
 }

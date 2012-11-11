@@ -2,7 +2,7 @@ package Controller;
 
 public class Stick{
     private int Direction;
-    private Button Up,Down,Right,Left;
+    private KeyButton Up,Down,Right,Left;
 
     public int getDirection(){return Direction;}
     public void setDirection(int Direction){this.Direction=Direction;}
@@ -16,10 +16,10 @@ public class Stick{
     }
 
     public Stick(int UpCode,int DownCode,int RightCode,int LeftCode){
-	Up = new Button(UpCode,0);
-	Down = new Button(DownCode,0);
-	Right = new Button(RightCode,0);
-	Left = new Button(LeftCode,0);
+	Up = new KeyButton(UpCode,0);
+	Down = new KeyButton(DownCode,0);
+	Right = new KeyButton(RightCode,0);
+	Left = new KeyButton(LeftCode,0);
 	setDirection(5);
     }
 
@@ -47,6 +47,8 @@ public class Stick{
 	    setDirection(1);
 	}else if(down && right){
 	    setDirection(3);
+	}else if( (up && down) || (right && left) ){
+	    setDirection(5);
 	}
 	//not allow 3 or 4 directions input
 	if( (up&&down&&right) || (up&&down&&left) || (up&&right&&left) || (down&&right&&left) || (up&&down&&right&&left)){
@@ -54,19 +56,18 @@ public class Stick{
 	}
     }
 
-    public void keyPressed(int KeyCode){
-	System.out.println(KeyCode);
-	Up.keyPressed(KeyCode);
-	Down.keyPressed(KeyCode);
-	Right.keyPressed(KeyCode);
-	Left.keyPressed(KeyCode);
+    public void buttonPress(int KeyCode){
+	Up.keyPress(KeyCode);
+	Down.keyPress(KeyCode);
+	Right.keyPress(KeyCode);
+	Left.keyPress(KeyCode);
     }
 
-    public void keyReleased(int KeyCode){
-	Up.keyReleased(KeyCode);
-	Down.keyReleased(KeyCode);
-	Right.keyReleased(KeyCode);
-	Left.keyReleased(KeyCode);
+    public void buttonRelease(int KeyCode){
+	Up.keyRelease(KeyCode);
+	Down.keyRelease(KeyCode);
+	Right.keyRelease(KeyCode);
+	Left.keyRelease(KeyCode);
 	
     }
 

@@ -11,42 +11,28 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestButtonConcept{
-    static private ButtonConcept button;
+    static private ButtonConcept buttonconcept;
 
     public static junit.framework.Test suite() {
 	return new JUnit4TestAdapter(TestButtonConcept.class);
     }
 
     @Before public void setUp() {
-	button = new ButtonConcept(8);
-    }
-
-    @Test public void isPressTest(){
-	button.buttonPress();
-	assertTrue(button.isPress());
-    }
-
-    @Test public void resetButtonTest(){
-	button.buttonPress();
-	assertTrue(button.isPress());
-	button.resetButton();
-	assertTrue(!button.isPress());	
-    }
-
-    @Test public void incrementTimeTest(){
-	button.incrementTime();
-	assertEquals(1,button.getTime()); 
-    }
-
-    @Test public void canPressTest(){
-	assertTrue(button.canPress());
+	buttonconcept = new ButtonConcept();
     }
 
     @Test public void buttonPressTest(){
-	button.buttonPress();
-	assertEquals(0,button.getLastPressTime());
-	assertTrue(button.isPress());
+	buttonconcept.buttonPress();
+	assertTrue(buttonconcept.getPressing());
     }
+
+    @Test public void buttonReleaseTest(){
+	buttonconcept.buttonPress();
+	assertTrue(buttonconcept.getPressing());
+	buttonconcept.buttonRelease();
+	assertTrue(!buttonconcept.getPressing());
+    }
+
 
 
 }
