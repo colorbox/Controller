@@ -23,6 +23,10 @@ while(){
 		Character.jump();
 	}
 
+	if(Controller.isZPress()){
+		Character.attack();
+	}
+
 	.
 	.
 	.
@@ -38,6 +42,11 @@ keyReleased(KeyEvent e){
 	Controller.keyReleased(e);
 }
 
+
+/*
+note isPress method in the Button recomended to use one time per loop
+because Button memoried last press time in isPress method
+*/
 ----------
 Test
 java org.junit.runner.JUnitCore Controller.TestXXX
